@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* Palette taken from the WishWash logo */
+@theme {
+  --color-navy: #0e2147;
+  --color-navy-deep: #091631;
+  --color-navy-soft: #1b3266;
+  --color-sky: #6fa8dc;
+  --color-sky-light: #a9cdee;
+  --color-sky-wash: #e3eefa;
+  --color-sky-ink: #2c66a3; /* sky tone dark enough for text on cream */
+  --color-gold: #c9a66b;
+  --color-cream: #fbf8f3;
+  --color-sand: #f3eee5;
+  --color-line: #e7e0d4;
+  --color-muted: #55627a;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+
+  --animate-sheen: sheen 4.5s ease-in-out infinite;
+  --animate-twinkle: twinkle 3.2s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+
+  @keyframes sheen {
+    0% { transform: translateX(-120%) skewX(-18deg); }
+    55%, 100% { transform: translateX(220%) skewX(-18deg); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.35; transform: scale(0.8) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(45deg); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(-520px); opacity: 0; }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-navy);
+}
+
+::selection {
+  background: var(--color-sky-light);
+  color: var(--color-navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-sky-ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
